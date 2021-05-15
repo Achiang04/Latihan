@@ -1,13 +1,13 @@
 function parseInt(arr) {
-  // let result = "";
+  let result = "";
 
-  // for (let i = arr.length - 1; i >= 0; i--) {
-  //   result += `${arr[i]} `;
-  // }
+  for (let i = arr.length - 1; i >= 0; i--) {
+    result += `${arr[i]} `;
+  }
 
-  // console.log(result);
+  console.log(result);
 
-  console.log(arr.reverse().join(" "));
+  // console.log(arr.reverse().join(" "));
 }
 
 parseInt([1, 4, 3, 2]);

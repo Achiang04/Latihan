@@ -19,9 +19,14 @@ function App() {
     () => JSON.parse(window.localStorage.getItem("data")) || initialState
   );
 
+  const [history, setHistory] = useState(
+    () => JSON.parse(window.localStorage.getItem("history")) || []
+  );
+
   useEffect(() => {
     window.localStorage.setItem("data", JSON.stringify(data));
-  }, [data]);
+    window.localStorage.setItem("history", JSON.stringify(history));
+  }, [data, history]);
 
   const [player, setPlayer] = useState(true);
   const [error, setError] = useState("");
@@ -30,18 +35,30 @@ function App() {
 
   const handleClickGame = useCallback(
     (i) => () => {
-      let temp = [...data];
-      if (temp[i] === null) {
+      const tempData = [...data];
+      if (tempData[i] === null) {
         setError("");
 
-        temp[i] = playerName;
-        setData(temp);
+        tempData[i] = playerName;
+        setData(tempData);
         setPlayer((previousPlayer) => !previousPlayer);
+
+        const historyData = {
+          label: `player ${playerName} put in position ${i}`,
+          data: tempData,
+        };
+        const tempHistory = [...history];
+        tempHistory.push(historyData);
+        setHistory(tempHistory);
 
         let result = false;
         win.map((e) => {
           const [a, b, c] = e;
-          if (temp[a] && temp[a] === temp[b] && temp[a] === temp[c]) {
+          if (
+            tempData[a] &&
+            tempData[a] === tempData[b] &&
+            tempData[a] === tempData[c]
+          ) {
             result = true;
           }
           return null;
@@ -53,7 +70,19 @@ function App() {
         setError("this field already fill, please select the other one");
       }
     },
-    [data, playerName]
+    [data, playerName, history]
+  );
+
+  const handleClickHistory = useCallback(
+    (index) => () => {
+      if (winner === "") {
+        const dataChange = history[index].data;
+        setData(dataChange);
+        const historyChange = history.filter((e, i) => i <= index && e);
+        setHistory(historyChange);
+      }
+    },
+    [history, winner]
   );
 
   const clearGame = useCallback(() => {
@@ -61,6 +90,7 @@ function App() {
     setPlayer(true);
     setError("");
     setWinner("");
+    setHistory([]);
   }, []);
 
   return (
@@ -89,6 +119,25 @@ function App() {
 
       <div style={{ marginTop: "50px", borderTop: "1px solid black" }}>
         <p>history</p>
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          {history.map((e, i) => {
+            return (
+              <button
+                key={i}
+                style={{
+                  marginTop: "5px",
+                  height: "24px",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+                type="button"
+                onClick={handleClickHistory(i)}
+              >
+                <p>{e.label}</p>
+              </button>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

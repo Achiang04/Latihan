@@ -56,3 +56,5 @@
 const condition = true;
 const arr = ["a", condition && "b"];
 console.log(arr);
+
+// test aja

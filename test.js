@@ -53,6 +53,41 @@
 
 // console.log(Object.entries(array));
 
-const condition = true;
-const arr = ["a", condition && "b"];
-console.log(arr);
+// const condition = true;
+// const arr = ["a", condition && "b"];
+// console.log(arr);
+
+class Animal {
+  name = String;
+  age = Number;
+  isMammal = Boolean;
+
+  constructor(name, age, isMammal) {
+    this.name = name;
+    this.age = age;
+    this.isMammal = isMammal;
+  }
+}
+
+class Rabbit extends Animal {
+  constructor(name, age) {
+    super(name, age, true);
+  }
+
+  eat() {
+    return `${this.name} sedang makan!`;
+  }
+}
+
+class Eagle extends Animal {
+  constructor(name, age) {
+    super(name, age, false);
+  }
+
+  fly() {
+    return `${this.name} sedang terbang!`;
+  }
+}
+
+const myRabbit = new Rabbit("Labi", 2);
+const myEagle = new Eagle("Elo", 4);

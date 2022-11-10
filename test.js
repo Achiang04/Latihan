@@ -57,37 +57,15 @@
 // const arr = ["a", condition && "b"];
 // console.log(arr);
 
-class Animal {
-  name = String;
-  age = Number;
-  isMammal = Boolean;
+// test aja
+// function minimal(a, b) {
+//   return a === b ? a : a < b ? a : b;
+// }
 
-  constructor(name, age, isMammal) {
-    this.name = name;
-    this.age = age;
-    this.isMammal = isMammal;
-  }
-}
+// function power(a, b) {
+//   return a ** b;
+// }
 
-class Rabbit extends Animal {
-  constructor(name, age) {
-    super(name, age, true);
-  }
-
-  eat() {
-    return `${this.name} sedang makan!`;
-  }
-}
-
-class Eagle extends Animal {
-  constructor(name, age) {
-    super(name, age, false);
-  }
-
-  fly() {
-    return `${this.name} sedang terbang!`;
-  }
-}
-
-const myRabbit = new Rabbit("Labi", 2);
-const myEagle = new Eagle("Elo", 4);
+// console.log(power(7, 3)); // 343
+// console.log(power(3, 3)); // 27
+// console.log(power(4, 0.5)); // 2

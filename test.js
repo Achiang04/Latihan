@@ -73,3 +73,31 @@
 // class Car {}
 // const car = new Car();
 // console.log(typeof car);
+
+// function check(n) {
+//   let result = 0;
+//   for (let i = 0; i * i < n; i++) {
+//     result += i;
+//   }
+//   console.log(result);
+// }
+
+// check(10);
+
+// function suma() {
+//   let a = 12;
+//   let b = 6;
+//   let sum = 0;
+
+//   a = a * b;
+//   b = a / b;
+//   a = a / b;
+
+//   for (let i = 1; i <= a; i++) {
+//     sum = sum + (a % i);
+//   }
+
+//   console.log(sum);
+// }
+
+// suma();

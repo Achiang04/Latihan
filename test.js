@@ -101,3 +101,30 @@
 // }
 
 // suma();
+
+// function thanos() {
+//   let result = 1;
+//   for (let i = 2; i <= 50; i++) {
+//     if (i % 3 === 0) {
+//       result /= 2;
+//       result = Math.floor(result);
+//     } else {
+//       result *= 3;
+//     }
+//   }
+
+//   console.log(result);
+// }
+
+// thanos();
+
+// function get111() {
+//   let temp = "";
+//   for (let i = 1; i <= 1000; i++) {
+//     temp = `${temp}${i}`;
+//   }
+//   // index 111 adalah 110
+//   console.log(temp.charAt(110));
+// }
+
+// get111();

@@ -49,6 +49,20 @@ WHILE i < 8
 
 function getPrime(num) {
   // Code here
+  const result = [];
+  for (let i = 2; i <= num; i++) {
+    let counter = 0;
+    for (let j = 2; j <= i; j++) {
+      if (i % j === 0) {
+        counter++;
+      }
+    }
+
+    if (counter === 1) {
+      result.push(i);
+    }
+  }
+  return result;
 }
 
 console.log(getPrime(10)); // [ 2, 3, 5, 7 ]

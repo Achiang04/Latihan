@@ -1,0 +1,35 @@
+# make baseImage apa
+FROM node:16-alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN yarn
+
+COPY ./ ./
+
+RUN yarn add serve
+RUN yarn build
+
+EXPOSE 3001
+
+CMD ["serve", "-s", "build"]
+
+# konsep jalanin nya sama dengan yang sebelumnya di Dockerfile.dev
+# bedanya ada sedikit perbedaan di bagian command buldnya
+# -f itu untuk nandain file specific mana yang akan di pake untuk build docker nya
+# docker build -t reactjs-stg/tic-tac-toe:1.0.0 -f Dockerfile.stg ./
+# setelah selesai build, cek images nya dari command "docker images"
+
+# 3000:3000 artinya 3000 kiri untuk port output dan 3000 yang kanan dari port project yang dirunning
+# command running container nya "docker run -d -p 3000:3000 reactjs-stg/tic-tac-toe:1.0.0"
+
+# cek status docker containernya yang jalan dengan command "docker ps"
+
+# command mattin docker containernya
+# docker container stop nama_container
+# docker container stop stupefied_carver 
+
+# command untuk hapus docker image
+# docker rmi image_id
+# docker rmi 2d84ffcfa8b7
